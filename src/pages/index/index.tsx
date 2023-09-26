@@ -1,16 +1,15 @@
-import { View, Text } from '@tarojs/components'
-import { useLoad } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
+import { View, Button } from '@tarojs/components'
+import Content from './components/content/index'
 import './index.scss'
 
-export default function Index() {
-
-  useLoad(() => {
-    console.log('Page loaded.')
-  })
-
+const Index = () => {
   return (
     <View className='index'>
-      <Text>Hello world!</Text>
+      <View className='header'>简历优化助手</View>
+      <Content />
     </View>
   )
 }
+
+export default Index
