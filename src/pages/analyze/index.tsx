@@ -1,9 +1,9 @@
 import { FC } from "react"
-import {View} from "@tarojs/components"
+import { View } from "@tarojs/components"
 
 import "./index.scss"
 
-interface IProps {}
+interface IProps { }
 
 const defaultProps = {}
 
@@ -13,7 +13,20 @@ type Props = IProps & Partial<DefaultProps>
 
 const AnalyzePage: FC<Props> = (props) => {
   return (
-    <View className='analyze-page'>Analyze</View>
+    <View className='analyze'>
+      <View className='analyze__resume-optimize'>
+        <View className='analyze__resume-optimize__title'>推荐简历改动</View>
+        <View className='analyze__resume-optimize__content'>
+          123
+        </View>
+      </View>
+      <View className='analyze__interview-question'>
+        <View className='analyze__interview-question__title'>推荐面试问题</View>
+        <View className='analyze__interview-question__content'>
+          2234
+        </View>
+      </View>
+    </View>
   )
 }
 

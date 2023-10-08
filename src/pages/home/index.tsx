@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { View, Picker } from '@tarojs/components'
-import {  AtIcon, AtButton } from 'taro-ui'
+import { AtIcon, AtButton } from 'taro-ui'
 
 import { mockData } from './mock'
 import './index.scss'
@@ -19,6 +20,12 @@ const Home = () => {
     setPickerValue(jobTypes[index])
   }
 
+  const handleStart = () => {
+    Taro.navigateTo({
+      url: '/pages/analyze/index',
+    })
+  }
+
   return (
     <View className='home'>
       <View className='home__upload-btn' onClick={handleUpload}>
@@ -31,7 +38,15 @@ const Home = () => {
           {!pickerValue && <AtIcon value='chevron-down' size='20' color='#333' />}
         </View>
       </Picker>
-      <AtButton className='home__start-btn' type='primary' size='small' disabled={!pickerValue}>开  始</AtButton>
+      <AtButton
+        className='home__start-btn'
+        type='primary'
+        size='small'
+        disabled={!pickerValue}
+        onClick={handleStart}
+      >
+        开  始
+      </AtButton>
       <View className='home__footer'>解锁码：暂未支付</View>
     </View>
   )
