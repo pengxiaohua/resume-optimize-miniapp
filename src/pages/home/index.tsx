@@ -8,9 +8,32 @@ import './index.scss'
 
 const Home = () => {
   const [pickerValue, setPickerValue] = useState('')
+  const [fileName, setFileName] = useState('');
 
+  // Handle PDF upload
   const handleUpload = () => {
-    // Handle PDF upload
+    Taro.chooseMessageFile({
+      count: 1,
+      type: 'file',
+      extension: ['pdf'],
+      success: function (res) {
+        const tempFilePaths = res.tempFiles;
+        setFileName(tempFilePaths[0].name);
+
+        Taro.uploadFile({
+          url: 'YOUR_SERVER_ENDPOINT', // 后端服务API，用于接收上传的文件
+          filePath: tempFilePaths[0].path,
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success: function (uploadRes) {
+            const data = uploadRes.data;
+            // TODO: 处理上传后的逻辑
+          }
+        });
+      }
+    });
   }
 
   // Handle job type change
